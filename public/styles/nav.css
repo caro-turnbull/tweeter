@@ -1,0 +1,23 @@
+nav{
+  display: flex;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  height: 120px;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  align-items: flex-end;
+  justify-content: space-between;
+ }
+ nav span.logo {
+  display: flex;
+  font-family: 'Bungee', sans-serif;
+  margin: 1.5em;
+}
+nav span.newTweet {
+  display: flex;
+  margin: 1.5em;
+  flex-direction: column;
+  flex-wrap: no wrap;
+  
+ }

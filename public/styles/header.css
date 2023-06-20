@@ -1,0 +1,19 @@
+header {
+  background-color: gold;
+  background-image: url("../images/black-scales.png");
+  height: 520px;  
+  width: 100 vw;
+  align-content: center;
+}
+
+  header div.userImage {
+  display: flex;
+
+  justify-content: center;
+  
+}
+
+header div.userName {
+  display: flex;
+  justify-content: center;
+}
