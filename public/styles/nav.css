@@ -1,23 +1,28 @@
 nav{
-  display: flex;
   background-color: #4056A1;
   color: #FFFFFF;
   height: 120px;
   width: 100vw;
+  padding: 0 1.5em;
   position: sticky;
   top: 0;
-  align-items: flex-end;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
- }
- nav span.logo {
-  display: flex;
+} 
+
+nav span.logo {
   font-family: 'Bungee', sans-serif;
-  margin: 1.5em;
 }
-nav span.newTweet {
+
+.write-tweet {
   display: flex;
-  margin: 1.5em;
   flex-direction: column;
-  flex-wrap: no wrap;
-  
- }
+  justify-content: center;
+  align-items: center;
+}
+
+.write-tweet i{
+  color: red;
+}
+

@@ -18,13 +18,25 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: 'Source Sans 3', sans-serif;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- body{
-  font-family: 'Source Sans 3', sans-serif;
- }
+
  
+  main.container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 90%;
+    margin: 1em auto;
+  }
+
+  .allTheTweets {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+  }
