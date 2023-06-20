@@ -23,9 +23,12 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/path/to/cdn/jquery.slim.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script src="scripts/composer-char-counter.js"></script> 
+  
   </head>
 
   <body>
@@ -65,7 +68,7 @@
           <hr>
           <div class="new-tweet-bottom">
             <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+            <output id="counter" name="counter" class="counter" for="tweet-text"></output>
           </div>
         </form>
       </section>
@@ -76,5 +79,6 @@
       </section>
 
     </main>
+    
   </body>
 </html>
