@@ -3,7 +3,10 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// Test / driver code (temporary). Eventually will get this from the server.
+
+//const { response } = require("express");
+
+
 const tweetData = 
   [
     {
@@ -63,16 +66,32 @@ $(document).ready(function(){
     `)
     return $tweet;
   }
-
-  const renderTweets = function(tweets, target) {
+  
+  const renderTweets = function(tweets) {
     tweets.forEach(tweet => {
       const $tweetElement = createTweetElement(tweet);
-      $(target).append($tweetElement);
+      $('.allTheTweets').append($tweetElement);
+      console.log("is it rendering?", $tweetElement)
     })
   }
-  // call render tweets which calls create tweet elements
-  renderTweets(tweetData), '.allTheTweets';
-
+  //renderTweets(tweetData), '.allTheTweets';  //param??? loadTweets()
+  
+  const loadTweets = function(){
+    $.ajax({
+      type: "GET",
+      url: "/tweets",
+      dataType: 'json',
+      success: function(res) {
+      console.log("Data loaded successfully", res);
+      renderTweets(res)
+    },
+      error: function() {
+      console.error("Error loading data");
+    }
+    })
+   }
+   
+  
 
   //listener 
   $('#tweet-form').on("submit", function (event) {
@@ -80,20 +99,20 @@ $(document).ready(function(){
     console.log("button pushed!")
     
     const formData = $('#tweet-form').serialize();
-
+    
     $.ajax({
       type: "POST",
       url: "/tweets",
       data: formData,
-      success: function(res) {
+      success: function() {
         console.log("Data submitted successfully");
-        console.log(res)
-        
       },
       error: function() {
         console.error("Error submitting data");
       }
     });
   })
+  
+  loadTweets()
   
 })
