@@ -31,49 +31,69 @@ const tweetData =
   ]
 
 
-
-const createTweetElement = function(tweet) {
-  console.log("testing testing", tweet.user.avatars)
-  const $tweet = $(`
-    <article >
-      <header>
-        <div class="user">
-          <span>
-            <img src=${tweet.user.avatars}>
-          </span>
-          <span>
-            <h3 class="userName">${tweet.user.name}</h3>
-          </span>
-        </div>
-        <div class="handle">${tweet.user.handle}</div>
-      </header>
-      <p>${tweet.content.text}</p>
-      <hr>
-      <footer>
-        <div class="days-ago">howmanydaysago</div>
-        <div class="icons">
-          <i class="fa-solid fa-flag"></i>
-          <i class="fa-solid fa-retweet"></i>
-          <i class="fa-solid fa-heart"></i>
-        </div>
-      </footer>
-    </article>
-  `)
-  return $tweet;
-}
-const renderTweets = function(tweets) {
-  tweets.forEach(tweet => {
-    const $tweetElement = createTweetElement(tweet);
-    $('.allTheTweets').append($tweetElement);
-  })
-}
-
-
-
 $(document).ready(function(){
-  //const $tweet = $(`<article class="allTheTweets">Hello world</article>`);
-  //const $tweet = createTweetElement(tweetData);
-  //console.log($tweet); // to see what it looks like
-  //$('.allTheTweets').append($tweet);
-  renderTweets(tweetData);
+
+
+  const createTweetElement = function(tweet) {
+    console.log("testing testing", tweet.user.avatars)
+    const $tweet = $(`
+      <article >
+        <header>
+          <div class="user">
+            <span>
+              <img src=${tweet.user.avatars}>
+            </span>
+            <span>
+              <h3 class="userName">${tweet.user.name}</h3>
+            </span>
+          </div>
+          <div class="handle">${tweet.user.handle}</div>
+        </header>
+        <p>${tweet.content.text}</p>
+        <hr>
+        <footer>
+          <div class="days-ago">howmanydaysago</div>
+          <div class="icons">
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </footer>
+      </article>
+    `)
+    return $tweet;
+  }
+
+  const renderTweets = function(tweets, target) {
+    tweets.forEach(tweet => {
+      const $tweetElement = createTweetElement(tweet);
+      $(target).append($tweetElement);
+    })
+  }
+  // call render tweets which calls create tweet elements
+  renderTweets(tweetData), '.allTheTweets';
+
+
+  //listener 
+  $('#tweet-form').on("submit", function (event) {
+    event.preventDefault();
+    console.log("button pushed!")
+    
+    const formData = $('#tweet-form').serialize();
+
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: formData,
+      success: function(res) {
+        console.log("Data submitted successfully");
+        console.log(res)
+        
+      },
+      error: function() {
+        console.error("Error submitting data");
+      }
+    });
+  })
+  
 })

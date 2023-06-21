@@ -28,7 +28,6 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script src="scripts/composer-char-counter.js"></script> 
-  
   </head>
 
   <body>
@@ -58,7 +57,7 @@
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
 
-        <form name= "tweet-form" action="/tweets" method="POST">
+        <form name= "tweet-form" id="tweet-form" action="/tweets" method="POST">
           <textarea 
             name="text" 
             id="tweet-text"
@@ -71,6 +70,7 @@
             <output id="counter" name="counter" class="counter" for="tweet-text"></output>
           </div>
         </form>
+        
       </section>
    
       <section class="allTheTweets">
