@@ -67,7 +67,7 @@ $(document).ready(function(){
     }
     })
    }
-  //loadTweets()
+  loadTweets()
   
 
   //listener for button
@@ -78,13 +78,14 @@ $(document).ready(function(){
     const tweetText = tweetContent.value;  
     
     if (!tweetText){        
-      alert("Your tweet is empty.")
+      $(".error-message").text(" ❗ Your tweet is empty.").slideDown();
       return
     }
     if(tweetText.length > 140) {       
-      alert("Your tweet is too long.")
+      $(".error-message").text(" ❗ Your tweet is too long.").slideDown();
       return
-    } 
+    }
+  
 
     //post happens inside the listener
     const formData = $('#tweet-form').serialize();
