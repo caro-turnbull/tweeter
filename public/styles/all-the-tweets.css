@@ -11,6 +11,11 @@
   margin: 1em;
 }
 
+.allTheTweets article:hover{
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+}
+
+
 .allTheTweets header{
   background-color: transparent;
   background-image: none;
@@ -46,7 +51,8 @@
 .icons {
   color: #4056A1;
 }
-.icons:hover{
-  color: red;
+
+.fa-solid:hover{
+  color: goldenrod;
 }
 
