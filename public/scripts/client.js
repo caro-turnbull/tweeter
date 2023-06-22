@@ -38,6 +38,7 @@ $(document).ready(function(){
 
 
   const createTweetElement = function(tweet) {
+    let time = timeago.format(Date.now())       //<--- 
     console.log("testing testing", tweet.user.avatars)
     const $tweet = $(`
       <article >
@@ -55,7 +56,7 @@ $(document).ready(function(){
         <p>${tweet.content.text}</p>
         <hr>
         <footer>
-          <div class="days-ago">howmanydaysago</div>
+          <div class="days-ago">${time}</div>     
           <div class="icons">
             <i class="fa-solid fa-flag"></i>
             <i class="fa-solid fa-retweet"></i>
@@ -70,7 +71,7 @@ $(document).ready(function(){
   const renderTweets = function(tweets) {
     tweets.forEach(tweet => {
       const $tweetElement = createTweetElement(tweet);
-      $('.allTheTweets').append($tweetElement);
+      $('.allTheTweets').prepend($tweetElement);
       console.log("is it rendering?", $tweetElement)
     })
   }
@@ -90,7 +91,7 @@ $(document).ready(function(){
     }
     })
    }
-   
+  loadTweets()
   
 
   //listener 
@@ -99,20 +100,28 @@ $(document).ready(function(){
     console.log("button pushed!")
     
     const formData = $('#tweet-form').serialize();
-    
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: formData,
-      success: function() {
-        console.log("Data submitted successfully");
-      },
-      error: function() {
-        console.error("Error submitting data");
-      }
-    });
+    console.log("data is", formData)
+    if (formData.text === ""){        //<--- 
+      alert("Your tweet is empty.")
+      return
+    }
+    if(formData.length > 140) {       //<--- 
+      alert("Your tweet is too long.")
+      return
+    } 
+      $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: formData,
+        success: function() {
+          console.log("Data submitted successfully");
+          loadTweets();
+        },
+        error: function() {
+          console.error("Error submitting data");
+        }
+      });
   })
   
-  loadTweets()
   
 })
