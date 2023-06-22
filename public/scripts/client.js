@@ -46,9 +46,15 @@ $(document).ready(function(){
   }
   
   const renderTweets = function(tweets) {
+    $('.allTheTweets').empty();
     tweets.forEach(tweet => {
       const $tweetElement = createTweetElement(tweet);
       $('.allTheTweets').prepend($tweetElement);
+      
+      
+      // for(let tweet of tweets) {
+      //   const $tweet = createTweetElement(tweet);
+      //   $('.allTheTweets').prepend($tweet); 
       console.log("is it rendering?", $tweetElement)
     })
   }
@@ -67,7 +73,7 @@ $(document).ready(function(){
     }
     })
    }
-  loadTweets()
+  loadTweets()                   //<-----
   
 
   //listener for button
@@ -78,11 +84,11 @@ $(document).ready(function(){
     const tweetText = tweetContent.value;  
     
     if (!tweetText){        
-      $(".error-message").text(" ❗ Your tweet is empty.").slideDown();
+      $(".error-message").text(" ❗ Your tweet is empty. ❗ ").slideDown();
       return
     }
     if(tweetText.length > 140) {       
-      $(".error-message").text(" ❗ Your tweet is too long.").slideDown();
+      $(".error-message").text(" ❗ Your tweet is too long. ❗ ").slideDown();
       return
     }
   
@@ -95,7 +101,7 @@ $(document).ready(function(){
         data: formData,
         success: function() {
           console.log("Data submitted successfully");
-          loadTweets();
+          loadTweets();           //<-----
         },
         error: function() {
           console.error("Error submitting data");
