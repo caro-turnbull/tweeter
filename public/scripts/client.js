@@ -101,12 +101,14 @@ $(document).ready(function(){
         data: formData,
         success: function() {
           console.log("Data submitted successfully");
+          $("#tweet-text").val("")
           loadTweets();           //<-----
         },
         error: function() {
           console.error("Error submitting data");
         }
       });
+
   })
   
 
