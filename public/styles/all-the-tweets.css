@@ -46,3 +46,7 @@
 .icons {
   color: #4056A1;
 }
+.icons:hover{
+  color: red;
+}
+
