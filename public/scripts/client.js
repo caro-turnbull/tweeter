@@ -73,7 +73,7 @@ $(document).ready(function(){
   //listener for submit button
   $('#tweet-form').on("submit", function (event) {
     event.preventDefault();
-    
+   
     const tweetContent = document.getElementById("tweet-text")
     const tweetText = tweetContent.value;  
     if (!tweetText){        
@@ -84,7 +84,7 @@ $(document).ready(function(){
       $(".error-message").text(" ❗ Your tweet is too long. ❗ ").slideDown();
       return
     }
-  
+  $(".tweet-from)".placeholder)
 
     //post happens inside the listener
     const formData = $('#tweet-form').serialize();
@@ -104,6 +104,17 @@ $(document).ready(function(){
       });
 
   })
+
+  //listener for starting to type, to clear any warnings and colours
+  $('.new-tweet textarea').click(function() {
+    console.log("clicked on form")
+    const counter = document.querySelector('#counter');
+    counter.style.color = 'blacK';
+    const errMsg = document.querySelector('.error-message');
+    if (errMsg.style.display !== 'none') {
+      errMsg.style.display = 'none'};
+  })
+
   
   //listener for write button, which is actually a div
   const writeBtn = document.querySelector('.write-tweet');
@@ -116,6 +127,5 @@ $(document).ready(function(){
         writeForm.style.display = "flex"
       }
       })
-    
     
 })

@@ -1,11 +1,3 @@
-console.log("working?")
-
-// $(document).ready(function() {
-//   $(".new-tweet textarea").on("keypress", function() {
-//     let enteredLength = 
-//     console.log("typing")
-//   })
-// });
 
 $(document).ready(function(){
     $('.new-tweet textarea').on('keyup',function() {

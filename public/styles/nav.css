@@ -1,10 +1,10 @@
 nav{
-  background-color: #4056A1;
+  background-color: none;
   color: #FFFFFF;
   height: 120px;
-  width: 100vw;
+  width: 100%;
   padding: 0 1.5em;
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   align-items: center;
