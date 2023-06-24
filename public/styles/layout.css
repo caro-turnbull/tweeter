@@ -31,8 +31,27 @@ body {
     display: flex;
     flex-direction: column;
     justify-items: center;
-    width: 90%;
-    margin: 1em auto;
+    margin: 1em 1.5em;
   }
 
-  
+  /*For Desktops*/
+  @media only screen and (min-width: 1024px) {
+    
+    main.container {
+      width: 60%;
+      margin: 2em 0;
+    }
+    .headerAndTweets {
+      display: flex;
+      flex-direction: row;
+      margin: 3em;
+    }
+    header {
+      width: 40%;
+      margin: 3em 6em 0 3em;
+      height: 500px;
+    }
+    .new-tweet {
+      margin: .7em 0;
+    }
+  }

@@ -50,12 +50,6 @@ $(document).ready(function(){
     tweets.forEach(tweet => {
       const $tweetElement = createTweetElement(tweet);
       $('.allTheTweets').prepend($tweetElement);
-      
-      
-      // for(let tweet of tweets) {
-      //   const $tweet = createTweetElement(tweet);
-      //   $('.allTheTweets').prepend($tweet); 
-      console.log("is it rendering?", $tweetElement)
     })
   }
   
@@ -73,16 +67,15 @@ $(document).ready(function(){
     }
     })
    }
-  loadTweets()                   //<-----
+  loadTweets()                   
   
 
-  //listener for button
+  //listener for submit button
   $('#tweet-form').on("submit", function (event) {
     event.preventDefault();
     
     const tweetContent = document.getElementById("tweet-text")
     const tweetText = tweetContent.value;  
-    
     if (!tweetText){        
       $(".error-message").text(" ❗ Your tweet is empty. ❗ ").slideDown();
       return
@@ -102,7 +95,8 @@ $(document).ready(function(){
         success: function() {
           console.log("Data submitted successfully");
           $("#tweet-text").val("")
-          loadTweets();           //<-----
+          $('#counter').val("140")
+          loadTweets();           
         },
         error: function() {
           console.error("Error submitting data");
@@ -111,6 +105,17 @@ $(document).ready(function(){
 
   })
   
-
-
+  //listener for write button, which is actually a div
+  const writeBtn = document.querySelector('.write-tweet');
+  const writeForm = document.querySelector('.new-tweet');
+    writeBtn.addEventListener('click', function() {
+      console.log('Div was clicked!');
+      if (writeForm.style.display !== "none") {
+        writeForm.style.display = "none";
+      } else {
+        writeForm.style.display = "flex"
+      }
+      })
+    
+    
 })
