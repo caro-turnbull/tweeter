@@ -108,8 +108,6 @@ $(document).ready(function(){
   //listener for starting to type, to clear any warnings and colours
   $('.new-tweet textarea').click(function() {
     console.log("clicked on form")
-    const counter = document.querySelector('#counter');
-    counter.style.color = 'blacK';
     const errMsg = document.querySelector('.error-message');
     if (errMsg.style.display !== 'none') {
       errMsg.style.display = 'none'};
